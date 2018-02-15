@@ -1,8 +1,17 @@
 package hotelmanagement;
 
+import hotelmanagement.data.RoomDataBase;
+
 public class MainMenu extends Menu {
+
 	AccomadationManagement acc = new AccomadationManagement();
-	CleaningReport hr = new CleaningReport();
+	CleaningReport hk;
+	final RoomDataBase roomdbdRef;
+
+	public MainMenu(final RoomDataBase roomdbd) {
+		this.roomdbdRef = roomdbd;
+		hk = new CleaningReport(roomdbd);
+	}
 
 	@Override
 	public void printMenu() {
@@ -22,15 +31,7 @@ public class MainMenu extends Menu {
 		switch (menu) {
 		case 1:
 			System.out.println("Otel konaklama durumunu sectiniz.");
-			boolean menuExit = false;
-			do {
-				// uc ana adim var
-				// 1 menu 2 kullanýcýnýn menu secimini aliýyoruz
-				// 3 secime uygun operasyon
-				acc.printMenu();
-				int accMenu = acc.getInput();
-				menuExit = acc.operationMenu(accMenu);
-			} while (menuExit == false);
+			acc.menuLoop();
 
 			break;
 		case 2:
@@ -38,6 +39,7 @@ public class MainMenu extends Menu {
 			break;
 		case 3:
 			System.out.println("Oda temizlik durumunu sectiniz");
+			hk.menuLoop();
 			break;
 		case 0:
 			System.out.println("Cikis yapiyorsunuz.");

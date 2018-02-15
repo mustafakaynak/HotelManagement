@@ -16,4 +16,13 @@ public abstract class Menu {
 		return menu1;
 	}
 
+	public void menuLoop() {
+		boolean menuExit = false;
+		do {
+			printMenu();
+			int menu = getInput();
+			menuExit = operationMenu(menu);
+		} while (menuExit == false);
+	}
+
 }
