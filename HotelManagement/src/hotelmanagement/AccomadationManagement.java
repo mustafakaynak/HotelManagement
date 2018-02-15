@@ -7,88 +7,97 @@ import java.util.Scanner;
 import hotelmanagement.model.Customer;
 
 public class AccomadationManagement extends Menu {
-	private static List<Customer> customers = new ArrayList<Customer>();
+	private static List<Customer> customers = new ArrayList();
 
 	@Override
 	public void printMenu() {
-		System.out.println("***********************************");
-		System.out.println(" Accomadation Menu:");
-		System.out.println("(1) check in");
-		System.out.println("(2) chech out.");
-		System.out.println("(3) early check out");
-		System.out.println("(4) Guncel musteriler.");
-		System.out.println("(0) Bir onceki menuye don.");
-		System.out.println("0 ile 3 arasinda giris yapiniz.");
-		System.out.println("***********************************");
-
+		System.out.println("*****************");
+		System.out.println("Accomaation Management");
+		System.out.println("(1):Check in");
+		System.out.println("(2):Check out");
+		System.out.println("(3):Early check out");
+		System.out.println("(4):Guncel musteriler.");
+		System.out.println("(0): Bir onceki menuye don");
 	}
 
 	@Override
 	public boolean operationMenu(int menu) {
-		// boolean neden false donduruyor.
 		switch (menu) {
 		case 1:
-			System.out.println("check in'i sectiniz.");
+			System.out.println("Checkin'i sectiniz.");
 			checkInOperation();
-			return false;
-
+			break;
 		case 2:
-			System.out.println("check outu sectiniz.");
-			return false;
+			System.out.println("check out'u sectiniz.");
+			checkOutOperation();
 
+			break;
 		case 3:
-			System.out.println("early check outu sectiniz.");
-			return false;
+			System.out.println("early check out'u sectiniz.");
+			earlyCheckOutOperation();
+			break;
 		case 4:
-			System.out.println("guncel musteri raporu.");
-
+			System.out.println("Guncel musteri raporu");
 			customerReport();
-
-			return false;
-
+			break;
 		case 0:
 			System.out.println("onceki menuye donuyorsunuz.");
 			return true;
 		default:
-			System.out.println("Gecersiz secim.");
-			return false;
+			System.out.println("gecersiz secim");
+			break;
 		}
-
+		return false;
 	}
 
 	private void customerReport() {
-		if (!customers.isEmpty()) {
-			for (int i = 0; i < customers.size(); i++) {
-				System.out.println(customers.get(i));
-			}
-		} else {
-			System.out.println("suan hicbir musteri bulunmamaktadir.");
+		for (int i = 0; i < customers.size(); i++) {
+			// get metodunu kullanmasa direk to stringden customersý yazdirsam olmaz mý.
+			System.out.println(customers.get(i));
 		}
-
 	}
 
 	private void checkInOperation() {
-
 		Scanner input = new Scanner(System.in);
-
-		// TODO sys out ile her birini sor
-		// TODO Hata kontrolu
 		System.out.println("Ad giriniz.");
 		String name = input.next();
-		System.out.println("soyad giriniz.");
+		System.out.println("Soyad giriniz");
 		String surName = input.next();
-		System.out.println("yas giriniz");
+		System.out.println("Yas giriniz.");
 		int age = input.nextInt();
-		System.out.println("uyruk giriniz.");
+		System.out.println("Uyruk giriniz.");
 		String nationality = input.next();
-		System.out.println("checkin tarihi");
+		System.out.println("check in tarihi");
 		String checkInDate = input.next();
-		System.out.println("check out tarihi.");
+		System.out.println("check out tarihi giriniz.");
 		String checkOutDate = input.next();
-
 		Customer c1 = new Customer(name, surName, nationality, age, checkInDate, checkOutDate);
 		customers.add(c1);
+	}
 
+	private void checkOutOperation() {
+		Scanner input = new Scanner(System.in);
+		System.out.println(customers);
+		System.out.println("Lutfen check out etmek istediðiniz musterinin sayisini giriniz.");
+		int sayi = input.nextInt();
+		// for (int i = 0; i < customers.size(); i++) {
+		// if (sayi == i) {
+		customers.remove(sayi - 1);
+		// }
+		// }
+		System.out.println("Guncel musteri raporu.");
+		System.out.println(customers);
+
+	}
+
+	private void earlyCheckOutOperation() {
+		Scanner input = new Scanner(System.in);
+		System.out.println(customers);
+		System.out.println("Lutfen check out etmek istediðiniz musterinin sayisini giriniz.");
+		int sayi = input.nextInt();
+		customers.remove(sayi - 1);
+		System.out.println("Guncel musteri raporu.");
+		System.out.println(customers);
 	}
 
 }

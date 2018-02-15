@@ -45,7 +45,8 @@ public class Customer {
 	@Override
 	public String toString() {
 
-		return name + " \n" + surName + " \n" + nationality + " \n" + checkInDate + " \n" + checkOutDate;
+		return name + "\n" + surName + "\n" + nationality + "\n" + age + "\n" + checkInDate + "\n" + checkOutDate + "\n"
+				+ "Yeni musteri:" + "\n";
 	}
 
 }

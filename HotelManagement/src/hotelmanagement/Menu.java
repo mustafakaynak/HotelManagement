@@ -10,10 +10,10 @@ public abstract class Menu {
 
 	public abstract boolean operationMenu(int menu);
 
-	public int getMenuInput() {
+	public int getInput() {
 		Scanner input = new Scanner(System.in);
-		int menu = input.nextInt();
-		return menu;
+		int menu1 = input.nextInt();
+		return menu1;
 	}
 
 }
