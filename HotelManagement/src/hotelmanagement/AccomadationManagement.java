@@ -25,6 +25,7 @@ public class AccomadationManagement extends Menu {
 
 	@Override
 	public boolean operationMenu(int menu) {
+		// boolean neden false donduruyor.
 		switch (menu) {
 		case 1:
 			System.out.println("check in'i sectiniz.");
@@ -56,9 +57,14 @@ public class AccomadationManagement extends Menu {
 	}
 
 	private void customerReport() {
-		for (int i = 0; i < customers.size(); i++) {
-			System.out.println(customers.get(i));
+		if (!customers.isEmpty()) {
+			for (int i = 0; i < customers.size(); i++) {
+				System.out.println(customers.get(i));
+			}
+		} else {
+			System.out.println("suan hicbir musteri bulunmamaktadir.");
 		}
+
 	}
 
 	private void checkInOperation() {
