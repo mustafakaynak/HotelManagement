@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import hotelmanagement.data.RoomDataBase;
 import hotelmanagement.model.Customer;
+import hotelmanagement.model.Room;
 
 public class AccomadationManagement extends Menu {
 	private static List<Customer> customers = new ArrayList();
@@ -64,6 +66,27 @@ public class AccomadationManagement extends Menu {
 
 	private void checkInOperation() {
 		Scanner input = new Scanner(System.in);
+
+		RoomDataBase.printEmptyRooms();
+		Room selectedRoom = null;
+		while (true) {
+			System.out.println("Select room");
+			String roomNumber = input.next();
+			selectedRoom = RoomDataBase.findRoom(roomNumber);
+			if (selectedRoom != null) {
+				break;
+			}
+		}
+
+		/*--
+		Room selectedRoom=null;
+		while(selectedRoom==null) {
+			System.out.println("Select room");
+			String roomNumber=input.next();
+			selectedRoom = RoomDataBase.findRoom(roomNumber);
+		}
+		 */
+
 		System.out.println("Ad giriniz.");
 		String name = input.next();
 		System.out.println("Soyad giriniz");
@@ -76,8 +99,10 @@ public class AccomadationManagement extends Menu {
 		String checkInDate = input.next();
 		System.out.println("check out tarihi giriniz.");
 		String checkOutDate = input.next();
-		Customer c1 = new Customer(name, surName, nationality, age, checkInDate, checkOutDate);
+		Customer c1 = new Customer(name, surName, nationality, age, checkInDate, checkOutDate, selectedRoom);
 		customers.add(c1);
+
+		selectedRoom.setCustomer(c1);
 	}
 
 	private void checkOutOperation() {

@@ -6,10 +6,8 @@ import hotelmanagement.data.RoomDataBase;
 import hotelmanagement.model.Room;
 
 public class CleaningReport extends Menu {
-	private RoomDataBase roomdbd;
 
-	public CleaningReport(RoomDataBase roomdbd) {
-		this.roomdbd = roomdbd;
+	public CleaningReport() {
 	}
 
 	@Override
@@ -25,7 +23,7 @@ public class CleaningReport extends Menu {
 		case 1:
 			System.out.println("List clean rooms.");
 
-			List<Room> rooms = roomdbd.getRooms();
+			List<Room> rooms = RoomDataBase.getRooms();
 
 			for (Room r : rooms) {
 				if (r.isClean() == true) {
@@ -41,7 +39,7 @@ public class CleaningReport extends Menu {
 			break;
 		case 2:
 			System.out.println("List dirty rooms");
-			List<Room> roomDirty = roomdbd.getRooms();
+			List<Room> roomDirty = RoomDataBase.getRooms();
 			for (Room r : roomDirty) {
 				if (!r.isClean()) {
 					System.out.println(r);

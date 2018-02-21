@@ -7,8 +7,10 @@ public class Customer {
 	private int age;
 	private String checkInDate;
 	private String checkOutDate;
+	private Room room;
 
-	public Customer(String name, String surName, String nationality, int age, String checkInDate, String checkOutDate) {
+	public Customer(String name, String surName, String nationality, int age, String checkInDate, String checkOutDate,
+			Room room) {
 		super();
 		this.name = name;
 		this.surName = surName;
@@ -16,6 +18,7 @@ public class Customer {
 		this.age = age;
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
+		this.room = room;
 	}
 
 	public String getName() {

@@ -1,13 +1,10 @@
 package hotelmanagement;
 
-import hotelmanagement.data.RoomDataBase;
-
 public class MainConsole {
 
 	public static void main(String[] args) {
-		RoomDataBase roomdbd = new RoomDataBase();
 
-		MainMenu menu1 = new MainMenu(roomdbd);
+		MainMenu menu1 = new MainMenu();
 
 		while (true) {
 			menu1.printMenu();

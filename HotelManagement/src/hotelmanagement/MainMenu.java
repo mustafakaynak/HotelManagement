@@ -1,16 +1,12 @@
 package hotelmanagement;
 
-import hotelmanagement.data.RoomDataBase;
-
 public class MainMenu extends Menu {
 
 	AccomadationManagement acc = new AccomadationManagement();
 	CleaningReport hk;
-	final RoomDataBase roomdbdRef;
 
-	public MainMenu(final RoomDataBase roomdbd) {
-		this.roomdbdRef = roomdbd;
-		hk = new CleaningReport(roomdbd);
+	public MainMenu() {
+		hk = new CleaningReport();
 	}
 
 	@Override

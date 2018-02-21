@@ -7,12 +7,18 @@ public class Room {
 	private Date lastCleanDate;
 	private RoomType type;
 	private Minibar minibar;
+	private Customer customer;
 
 	public Room(int roomNumber, RoomType type) {
 
 		this.roomNumber = roomNumber;
 		this.type = type;
 		this.minibar = new Minibar();
+		this.customer = null;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Minibar getMinibar() {
@@ -59,6 +65,15 @@ public class Room {
 
 	public enum RoomType {
 		TWIN_STANDARD, FRENCH_STANDARD, FRENCH_CLUB, TWIN_CLUB
+	}
+
+	public boolean isEmpty() {
+		if (customer == null) {
+			return true;
+		} else {
+			return false;
+		}
+		// return customer == null;
 	}
 
 }
