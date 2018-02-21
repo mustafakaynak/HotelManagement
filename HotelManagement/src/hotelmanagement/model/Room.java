@@ -3,19 +3,28 @@ package hotelmanagement.model;
 import java.util.Date;
 
 public class Room {
-	private int roomNumber;
-	private RoomType type;
+	int roomNumber;
 	private Date lastCleanDate;
+	private RoomType type;
+	private Minibar minibar;
 
-	// new Room(123, RoomType.DELUXE);
 	public Room(int roomNumber, RoomType type) {
-		super();
+
 		this.roomNumber = roomNumber;
 		this.type = type;
+		this.minibar = new Minibar();
 	}
 
-	public RoomType getType() {
-		return type;
+	public Minibar getMinibar() {
+		return minibar;
+	}
+
+	public void setMinibar(Minibar minibar) {
+		this.minibar = minibar;
+	}
+
+	public void setLastCleanDate(Date lastCleanDate) {
+		this.lastCleanDate = lastCleanDate;
 	}
 
 	public int getRoomNumber() {
@@ -26,21 +35,16 @@ public class Room {
 		return lastCleanDate;
 	}
 
-	public void setLastCleanDate(Date lastCleanDate) {
-		this.lastCleanDate = lastCleanDate;
+	public RoomType getType() {
+		return type;
 	}
 
 	public boolean isClean() {
-
-		// today 00:00:00
-		Date today12am = new Date();
-		today12am.setHours(0);
-		today12am.setMinutes(0);
-		today12am.setSeconds(0);
-
-		// return !( lastCleanDate == null || lastCleanDate.before(today12am) );
-
-		if (lastCleanDate == null || lastCleanDate.before(today12am)) {
+		Date today12AM = new Date();
+		today12AM.setHours(0);
+		today12AM.setMinutes(0);
+		today12AM.setSeconds(0);
+		if (lastCleanDate == null || lastCleanDate.before(today12AM)) {
 			return false;
 		} else {
 			return true;
@@ -50,7 +54,7 @@ public class Room {
 	@Override
 	public String toString() {
 
-		return "No: " + roomNumber + ",Type:" + type;
+		return "NO:" + roomNumber + "\n" + "TYPE:" + type;
 	}
 
 	public enum RoomType {

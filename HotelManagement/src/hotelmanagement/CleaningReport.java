@@ -28,7 +28,7 @@ public class CleaningReport extends Menu {
 			List<Room> rooms = roomdbd.getRooms();
 
 			for (Room r : rooms) {
-				if (r.isClean()) {
+				if (r.isClean() == true) {
 					System.out.println(r);
 				}
 			}
@@ -41,6 +41,18 @@ public class CleaningReport extends Menu {
 			break;
 		case 2:
 			System.out.println("List dirty rooms");
+			List<Room> roomDirty = roomdbd.getRooms();
+			for (Room r : roomDirty) {
+				if (!r.isClean()) {
+					System.out.println(r);
+				}
+			}
+			break;
+		case 0:
+			System.out.println("Back");
+			break;
+		default:
+			System.out.println("Wrong choice.");
 			break;
 
 		}

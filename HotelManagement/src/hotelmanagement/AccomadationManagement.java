@@ -17,6 +17,7 @@ public class AccomadationManagement extends Menu {
 		System.out.println("(2):Check out");
 		System.out.println("(3):Early check out");
 		System.out.println("(4):Guncel musteriler.");
+		System.out.println("(5)Minibar listesi");
 		System.out.println("(0): Bir onceki menuye don");
 	}
 
@@ -39,6 +40,10 @@ public class AccomadationManagement extends Menu {
 		case 4:
 			System.out.println("Guncel musteri raporu");
 			customerReport();
+			break;
+		case 5:
+			System.out.println("Minibar listesini sectiniz.");
+
 			break;
 		case 0:
 			System.out.println("onceki menuye donuyorsunuz.");

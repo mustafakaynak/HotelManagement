@@ -20,8 +20,9 @@ public class MainMenu extends Menu {
 		System.out.println("(1):Otel konaklama durumu");
 		System.out.println("(2):Oda durumu");
 		System.out.println("(3):Oda temizlik durumu");
+		System.out.println("(4)Restorant kontrol durumu");
 		System.out.println("(0): Cýkýs");
-		System.out.println("o ile 3 arasinda giris yapiniz");
+		System.out.println("0 ile 4 arasinda giris yapiniz");
 		System.out.println("***************");
 
 	}
@@ -40,6 +41,10 @@ public class MainMenu extends Menu {
 		case 3:
 			System.out.println("Oda temizlik durumunu sectiniz");
 			hk.menuLoop();
+			break;
+		case 4:
+			System.out.println("Restoran durumunu sectiniz.");
+			// TODO
 			break;
 		case 0:
 			System.out.println("Cikis yapiyorsunuz.");
