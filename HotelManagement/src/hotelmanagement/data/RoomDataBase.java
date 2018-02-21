@@ -10,7 +10,6 @@ public final class RoomDataBase {
 
 	private RoomDataBase() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	private static List<Room> initRooms() {
@@ -116,13 +115,13 @@ public final class RoomDataBase {
 			if (roomNumber.equals(roomNoStr2)) {
 				return room;
 			}
-
+			
 			// Yontem 3
 			int roomInt = Integer.parseInt(roomNumber);
 			if (roomInt == room.getRoomNumber()) {
 				return room;
 			}
-
+			
 			// Yontem 4
 			int roomInt2 = Integer.valueOf(roomNumber);
 			if (roomInt2 == room.getRoomNumber()) {
