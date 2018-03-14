@@ -6,10 +6,13 @@ import java.util.Scanner;
 
 import hotelmanagement.data.RoomDataBase;
 import hotelmanagement.model.Customer;
+import hotelmanagement.model.Minibar;
+import hotelmanagement.model.Product;
 import hotelmanagement.model.Room;
 
 public class AccomadationManagement extends Menu {
 	private static List<Customer> customers = new ArrayList();
+	private static List<Minibar> miniBar = new ArrayList<>();
 
 	@Override
 	public void printMenu() {
@@ -44,8 +47,8 @@ public class AccomadationManagement extends Menu {
 			customerReport();
 			break;
 		case 5:
-			System.out.println("Minibar listesini sectiniz.");
-
+			System.out.println("Oda minibar durumu.");
+			miniBarOperation();
 			break;
 		case 0:
 			System.out.println("onceki menuye donuyorsunuz.");
@@ -68,15 +71,7 @@ public class AccomadationManagement extends Menu {
 		Scanner input = new Scanner(System.in);
 
 		RoomDataBase.printEmptyRooms();
-		Room selectedRoom = null;
-		while (true) {
-			System.out.println("Select room");
-			String roomNumber = input.next();
-			selectedRoom = RoomDataBase.findRoom(roomNumber);
-			if (selectedRoom != null) {
-				break;
-			}
-		}
+		Room selectedRoom = selectRoom(input);
 
 		/*--
 		Room selectedRoom=null;
@@ -86,7 +81,9 @@ public class AccomadationManagement extends Menu {
 			selectedRoom = RoomDataBase.findRoom(roomNumber);
 		}
 		 */
-
+		System.out.println("Standard room price:" + selectedRoom.calculatePrice());
+		System.out.println("Input price");
+		double price = input.nextDouble();
 		System.out.println("Ad giriniz.");
 		String name = input.next();
 		System.out.println("Soyad giriniz");
@@ -103,6 +100,19 @@ public class AccomadationManagement extends Menu {
 		customers.add(c1);
 
 		selectedRoom.setCustomer(c1);
+	}
+
+	public static Room selectRoom(Scanner input) {
+		Room selectedRoom = null;
+		while (true) {
+			System.out.println("Select room");
+			String roomNumber = input.next();
+			selectedRoom = RoomDataBase.findRoom(roomNumber);
+			if (selectedRoom != null) {
+				break;
+			}
+		}
+		return selectedRoom;
 	}
 
 	private void checkOutOperation() {
@@ -128,6 +138,17 @@ public class AccomadationManagement extends Menu {
 		customers.remove(sayi - 1);
 		System.out.println("Guncel musteri raporu.");
 		System.out.println(customers);
+	}
+
+	private void miniBarOperation() {
+		Scanner input = new Scanner(System.in);
+		Room r = selectRoom(input);
+		System.out.println(r.getMinibar());
+		System.out.println("Please write the product.");
+		String productType = input.next();
+		Product p = r.getMinibar().findProduct(productType);
+		p.setQuantity(p.getQuantity() - 1);
+
 	}
 
 }

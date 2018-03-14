@@ -78,16 +78,30 @@ public final class RoomDataBase {
 
 	public static List<Room> getRooms() {
 		return rooms;
+
 	}
 
 	public static List<Room> getCleanRooms() {
-		// TODO bir liste don.bu liste icinde sadece temiz odalar bulunsun
-		return null;
+		List<Room> tmp = new ArrayList<>();
+		for (int i = 0; i < rooms.size(); i++) {
+			if (rooms.get(i).isClean()) {
+				tmp.add(rooms.get(i));
+			}
+
+		}
+		return tmp;
 	}
 
 	public static List<Room> getDirtyRooms() {
 		// TODO bir liste don.bu liste icinde sadece kirli odalar bulunsun
-		return null;
+		List<Room> tmp = new ArrayList<>();
+		for (int i = 0; i < rooms.size(); i++) {
+			if (rooms.get(i).isClean() == false) {
+				tmp.add(rooms.get(i));
+			}
+		}
+
+		return tmp;
 	}
 
 	public static void printEmptyRooms() {
@@ -115,13 +129,13 @@ public final class RoomDataBase {
 			if (roomNumber.equals(roomNoStr2)) {
 				return room;
 			}
-			
+
 			// Yontem 3
 			int roomInt = Integer.parseInt(roomNumber);
 			if (roomInt == room.getRoomNumber()) {
 				return room;
 			}
-			
+
 			// Yontem 4
 			int roomInt2 = Integer.valueOf(roomNumber);
 			if (roomInt2 == room.getRoomNumber()) {

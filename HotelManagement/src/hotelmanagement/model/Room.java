@@ -3,6 +3,9 @@ package hotelmanagement.model;
 import java.util.Date;
 
 public class Room {
+
+	public static double PRICE_CONSTANT = 100;
+
 	int roomNumber;
 	private Date lastCleanDate;
 	private RoomType type;
@@ -23,10 +26,6 @@ public class Room {
 
 	public Minibar getMinibar() {
 		return minibar;
-	}
-
-	public void setMinibar(Minibar minibar) {
-		this.minibar = minibar;
 	}
 
 	public void setLastCleanDate(Date lastCleanDate) {
@@ -74,6 +73,28 @@ public class Room {
 			return false;
 		}
 		// return customer == null;
+	}
+
+	public double calculatePrice() {
+
+		double price = 0;
+
+		switch (type) {
+		case TWIN_STANDARD:
+		case FRENCH_STANDARD:
+			price = PRICE_CONSTANT * 2;
+			break;
+		case TWIN_CLUB:
+		case FRENCH_CLUB:
+			price = PRICE_CONSTANT * 2.5;
+			break;
+		default:
+			System.out.println("Undefined.");
+			break;
+
+		}
+		return price;
+
 	}
 
 }

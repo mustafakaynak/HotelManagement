@@ -1,114 +1,61 @@
 package hotelmanagement.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Minibar {
-	private int cola = 1;
-	private int fanta = 1;
-	private int sprite = 1;
-	private int limonata = 1;
-	private int su = 2;
-	private int soda = 2;
-	private int enerji = 1;
-	private int kuruyemis = 1;
-	private int lokum = 1;
-	private int kaju = 1;
+	List<Product> productList;
 
 	public Minibar() {
+		productList = new ArrayList<>();
+		Product product1 = Product.createCola(1);
+		productList.add(product1);
+		Product product2 = Product.createOther("Sprite", 1);
+		productList.add(product2);
+		Product product3 = Product.createOther("Fanta", 1);
+		productList.add(product3);
+		Product product4 = Product.createOther("Enerji", 1);
+		productList.add(product4);
+		Product product5 = Product.createOther("Su", 2);
+		productList.add(product5);
+		Product product6 = Product.createOther("Soda", 2);
+		productList.add(product6);
+		Product product7 = Product.createOther("Kaju", 1);
+		productList.add(product7);
+		Product product8 = Product.createOther("Lokum", 1);
+		productList.add(product8);
+		Product product9 = Product.createOther("Karisik", 1);
+		productList.add(product9);
 
 	}
 
-	public Minibar(int cola, int fanta, int sprite, int limonata, int su, int soda, int enerji, int kuruyemis,
-			int lokum, int kaju) {
-		super();
-		this.cola = cola;
-		this.fanta = fanta;
-		this.sprite = sprite;
-		this.limonata = limonata;
-		this.su = su;
-		this.soda = soda;
-		this.enerji = enerji;
-		this.kuruyemis = kuruyemis;
-		this.lokum = lokum;
-		this.kaju = kaju;
+	@Override
+	public String toString() {
+		/*--
+		String tmp = "";//cola:1 sprite:1
+		for (int i = 0; i < productList.size(); i++) {
+			tmp = tmp + productList.get(i).getType() + ":" + productList.get(i).getQuantity() + " ";
+		}
+		return tmp;
+		*/
+
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < productList.size(); i++) {
+			sb.append(productList.get(i).getType() + ":" + productList.get(i).getQuantity() + " ");
+		}
+		return sb.toString();
+
 	}
 
-	public int getCola() {
-		return cola;
-	}
+	public Product findProduct(String type) {
+		for (int i = 0; i < productList.size(); i++) {
+			Product product = productList.get(i);
+			if (type.equals(product.getType())) {
+				return product;
+			}
+		}
+		return null;
 
-	public void setCola(int cola) {
-		this.cola = cola;
-	}
-
-	public int getFanta() {
-		return fanta;
-	}
-
-	public void setFanta(int fanta) {
-		this.fanta = fanta;
-	}
-
-	public int getSprite() {
-		return sprite;
-	}
-
-	public void setSprite(int sprite) {
-		this.sprite = sprite;
-	}
-
-	public int getLimonata() {
-		return limonata;
-	}
-
-	public void setLimonata(int limonata) {
-		this.limonata = limonata;
-	}
-
-	public int getSu() {
-		return su;
-	}
-
-	public void setSu(int su) {
-		this.su = su;
-	}
-
-	public int getSoda() {
-		return soda;
-	}
-
-	public void setSoda(int soda) {
-		this.soda = soda;
-	}
-
-	public int getEnerji() {
-		return enerji;
-	}
-
-	public void setEnerji(int enerji) {
-		this.enerji = enerji;
-	}
-
-	public int getKuruyemis() {
-		return kuruyemis;
-	}
-
-	public void setKuruyemis(int kuruyemis) {
-		this.kuruyemis = kuruyemis;
-	}
-
-	public int getLokum() {
-		return lokum;
-	}
-
-	public void setLokum(int lokum) {
-		this.lokum = lokum;
-	}
-
-	public int getKaju() {
-		return kaju;
-	}
-
-	public void setKaju(int kaju) {
-		this.kaju = kaju;
 	}
 
 }

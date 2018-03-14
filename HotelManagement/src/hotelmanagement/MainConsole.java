@@ -15,3 +15,7 @@ public class MainConsole {
 	}
 
 }
+// customer hesap
+// minibari tamamla
+// minibar azaldiginda customer hesabi arttir
+// hackerranki tamamla

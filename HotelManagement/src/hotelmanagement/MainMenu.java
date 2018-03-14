@@ -2,11 +2,12 @@ package hotelmanagement;
 
 public class MainMenu extends Menu {
 
-	AccomadationManagement acc = new AccomadationManagement();
-	CleaningReport hk;
+	private AccomadationManagement acc;
+	private CleaningReport hk;
 
 	public MainMenu() {
 		hk = new CleaningReport();
+		acc = new AccomadationManagement();
 	}
 
 	@Override
