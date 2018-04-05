@@ -109,31 +109,17 @@ public class AccomadationManagement extends Menu {
 		selectedRoom.setCustomer(c1);
 	}
 
-	public static Room selectRoom(Scanner input) {
-		Room selectedRoom = null;
-		while (true) {
-			System.out.println("Select room");
-			String roomNumber = input.next();
-			selectedRoom = RoomDataBase.findRoom(roomNumber);
-			if (selectedRoom != null) {
-				break;
-			}
-		}
-		return selectedRoom;
-	}
-
 	private void checkOutOperation() {
 		Scanner input = new Scanner(System.in);
-		System.out.println(customers);
-		System.out.println("Lutfen check out etmek istediðiniz musterinin sayisini giriniz.");
-		int sayi = input.nextInt();
-		// for (int i = 0; i < customers.size(); i++) {
-		// if (sayi == i) {
-		customers.remove(sayi - 1);
-		// }
-		// }
-		System.out.println("Guncel musteri raporu.");
-		System.out.println(customers);
+		Room selectedRoom = selectRoom(input);
+
+		Customer customer = selectedRoom.getCustomer();
+		System.out.println(customer);
+
+		double extra = 0;
+		customer.getBill().setExtra(extra);
+
+		selectedRoom.setCustomer(null);
 
 	}
 

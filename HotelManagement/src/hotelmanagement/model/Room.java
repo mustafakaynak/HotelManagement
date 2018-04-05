@@ -8,7 +8,7 @@ public class Room {
 	private Date lastCleanDate;
 	private RoomType type;
 	private Minibar minibar;
-	private LobbyBavarage lobbyBavarage;
+	private LobbyBeverage lobbyBavarage;
 	private Customer customer;
 
 	public Room(int roomNumber, RoomType type) {
@@ -17,10 +17,10 @@ public class Room {
 		this.type = type;
 		this.minibar = new Minibar();
 		this.customer = null;
-		this.lobbyBavarage = new LobbyBavarage();
+		this.lobbyBavarage = new LobbyBeverage();
 	}
 
-	public LobbyBavarage getLobbyBavarage() {
+	public LobbyBeverage getLobbyBeverage() {
 		return lobbyBavarage;
 	}
 

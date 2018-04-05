@@ -23,6 +23,10 @@ public class Customer {
 		this.bill = bill;
 	}
 
+	public Bill getBill() {
+		return bill;
+	}
+
 	public String getName() {
 		return name;
 	}

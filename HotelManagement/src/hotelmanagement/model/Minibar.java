@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Minibar {
-	List<Product> productList;
+	protected List<Product> productList;
+
+	private static final List<Product> INITIAL_MINIBAR_PRODUCTS = new ArrayList<Product>();
+	static {
+		createMinibarProducts(INITIAL_MINIBAR_PRODUCTS);
+	}
 
 	public Minibar() {
-		productList = new ArrayList<>();
+		List<Product> productList = new ArrayList<>();
+		createMinibarProducts(productList);
+	}
+
+	public static void createMinibarProducts(List<Product> productList) {
 		Product product1 = Product.createCola(1);
 		productList.add(product1);
 		Product product2 = Product.createOther("Sprite", 1, 10.0);
@@ -26,7 +35,6 @@ public class Minibar {
 		productList.add(product8);
 		Product product9 = Product.createOther("Karisik", 1, 10);
 		productList.add(product9);
-
 	}
 
 	@Override
@@ -55,7 +63,6 @@ public class Minibar {
 			}
 		}
 		return null;
-
 	}
 
 }

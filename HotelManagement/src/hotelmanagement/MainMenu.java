@@ -3,15 +3,15 @@ package hotelmanagement;
 import java.util.Scanner;
 
 import hotelmanagement.data.RoomDataBase;
-import hotelmanagement.model.LobbyBavarage;
+import hotelmanagement.model.LobbyBeverage;
+import hotelmanagement.model.Product;
 import hotelmanagement.model.Room;
 
 public class MainMenu extends Menu {
-	AccomadationManagement acc = new AccomadationManagement();
-	CleaningReport hk;
+	private Menu acc = new AccomadationManagement();
+	private CleaningReport hk;
 
 	public MainMenu() {
-
 		hk = new CleaningReport();
 	}
 
@@ -21,7 +21,7 @@ public class MainMenu extends Menu {
 		System.out.println("Menu");
 		System.out.println("(1):Otel konaklama durumu");
 		System.out.println("(2):Oda temizlik durumu");
-		System.out.println("(3):Choose lobby bavarage");
+		System.out.println("(3):Choose lobby beverage");
 		System.out.println("(0): Cýkýs");
 		System.out.println("o ile 3 arasinda giris yapiniz");
 		System.out.println("***************");
@@ -33,12 +33,7 @@ public class MainMenu extends Menu {
 		switch (menu) {
 		case 1:
 			System.out.println("Otel konaklama durumunu sectiniz.");
-			boolean menuExit = false;
-			do {
-				acc.printMenu();
-				int accMenu = acc.getInput();
-				menuExit = acc.operationMenu(accMenu);
-			} while (menuExit == false);
+			acc.menuLoop();
 
 			break;
 		case 2:
@@ -47,7 +42,7 @@ public class MainMenu extends Menu {
 			break;
 		case 3:
 			System.out.println("Choose lobby bavarage");
-			lobbyBavarageOperation();
+			lobbyBeverageOperation();
 			break;
 
 		case 0:
@@ -62,7 +57,7 @@ public class MainMenu extends Menu {
 		return false;
 	}
 
-	private void lobbyBavarageOperation() {
+	private void lobbyBeverageOperation() {
 		Scanner input = new Scanner(System.in);
 
 		System.out.println("Write roomNumber");
@@ -76,8 +71,11 @@ public class MainMenu extends Menu {
 		System.out.println("Write quantity");
 		int quantity = input.nextInt();
 
-		LobbyBavarage b = selectedRoom.getLobbyBavarage();
-		b.add(quantity, productType);
+		LobbyBeverage b = selectedRoom.getLobbyBeverage();
+		Product p = b.add(quantity, productType);
+		if (p == null) {
+			System.out.println("we don't have this type of product.");
+		}
 
 	}
 

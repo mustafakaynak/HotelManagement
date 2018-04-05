@@ -2,9 +2,27 @@ package hotelmanagement;
 
 import java.util.Scanner;
 
+import hotelmanagement.data.RoomDataBase;
+import hotelmanagement.model.Room;
+
 public abstract class Menu {
 	// interfacein icindeki hersey publictir Bu yuzden public belirtmemize gerek
 	// olmaz.
+
+	public static Room selectRoom(Scanner input) {
+		Room selectedRoom = null;
+		while (true) {
+			System.out.println("Select room");
+			String roomNumber = input.next();
+			selectedRoom = RoomDataBase.findRoom(roomNumber);
+			if (selectedRoom != null) {
+				break;
+			} else {
+				System.out.println("Wrong choice." + roomNumber + " Does not exist.");
+			}
+		}
+		return selectedRoom;
+	}
 
 	public abstract void printMenu();
 
