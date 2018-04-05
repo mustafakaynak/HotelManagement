@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import hotelmanagement.data.RoomDataBase;
+import hotelmanagement.model.Bill;
 import hotelmanagement.model.Customer;
 import hotelmanagement.model.Minibar;
 import hotelmanagement.model.Product;
 import hotelmanagement.model.Room;
+import hotelmanagement.util.DateOperations;
 
 public class AccomadationManagement extends Menu {
 	private static List<Customer> customers = new ArrayList();
@@ -84,6 +86,7 @@ public class AccomadationManagement extends Menu {
 		System.out.println("Standard room price:" + selectedRoom.calculatePrice());
 		System.out.println("Input price");
 		double price = input.nextDouble();
+
 		System.out.println("Ad giriniz.");
 		String name = input.next();
 		System.out.println("Soyad giriniz");
@@ -96,7 +99,11 @@ public class AccomadationManagement extends Menu {
 		String checkInDate = input.next();
 		System.out.println("check out tarihi giriniz.");
 		String checkOutDate = input.next();
-		Customer c1 = new Customer(name, surName, nationality, age, checkInDate, checkOutDate, selectedRoom);
+		// Stringi date cevirme.
+		int days = DateOperations.calculateDays(checkInDate, checkOutDate);
+		Bill bill = new Bill(price, days);
+
+		Customer c1 = new Customer(name, surName, nationality, age, checkInDate, checkOutDate, selectedRoom, bill);
 		customers.add(c1);
 
 		selectedRoom.setCustomer(c1);

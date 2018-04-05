@@ -10,21 +10,21 @@ public class Minibar {
 		productList = new ArrayList<>();
 		Product product1 = Product.createCola(1);
 		productList.add(product1);
-		Product product2 = Product.createOther("Sprite", 1);
+		Product product2 = Product.createOther("Sprite", 1, 10.0);
 		productList.add(product2);
-		Product product3 = Product.createOther("Fanta", 1);
+		Product product3 = Product.createOther("Fanta", 1, 10.0);
 		productList.add(product3);
-		Product product4 = Product.createOther("Enerji", 1);
+		Product product4 = Product.createOther("Enerji", 1, 12);
 		productList.add(product4);
-		Product product5 = Product.createOther("Su", 2);
+		Product product5 = Product.createOther("Su", 2, 5);
 		productList.add(product5);
-		Product product6 = Product.createOther("Soda", 2);
+		Product product6 = Product.createOther("Soda", 2, 5);
 		productList.add(product6);
-		Product product7 = Product.createOther("Kaju", 1);
+		Product product7 = Product.createOther("Kaju", 1, 10);
 		productList.add(product7);
-		Product product8 = Product.createOther("Lokum", 1);
+		Product product8 = Product.createOther("Lokum", 1, 10);
 		productList.add(product8);
-		Product product9 = Product.createOther("Karisik", 1);
+		Product product9 = Product.createOther("Karisik", 1, 10);
 		productList.add(product9);
 
 	}

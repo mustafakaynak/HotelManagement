@@ -8,9 +8,10 @@ public class Customer {
 	private String checkInDate;
 	private String checkOutDate;
 	private Room room;
+	private Bill bill;
 
 	public Customer(String name, String surName, String nationality, int age, String checkInDate, String checkOutDate,
-			Room room) {
+			Room room, Bill bill) {
 		super();
 		this.name = name;
 		this.surName = surName;
@@ -19,6 +20,7 @@ public class Customer {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.room = room;
+		this.bill = bill;
 	}
 
 	public String getName() {
