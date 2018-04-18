@@ -22,9 +22,8 @@ public class AccomadationManagement extends Menu {
 		System.out.println("Accomaation Management");
 		System.out.println("(1):Check in");
 		System.out.println("(2):Check out");
-		System.out.println("(3):Early check out");
-		System.out.println("(4):Guncel musteriler.");
-		System.out.println("(5)Minibar listesi");
+		System.out.println("(3):Guncel musteriler.");
+		System.out.println("(4):Minibar listesi");
 		System.out.println("(0): Bir onceki menuye don");
 	}
 
@@ -41,17 +40,14 @@ public class AccomadationManagement extends Menu {
 
 			break;
 		case 3:
-			System.out.println("early check out'u sectiniz.");
-			earlyCheckOutOperation();
-			break;
-		case 4:
 			System.out.println("Guncel musteri raporu");
 			customerReport();
 			break;
-		case 5:
+		case 4:
 			System.out.println("Oda minibar durumu.");
 			miniBarOperation();
 			break;
+
 		case 0:
 			System.out.println("onceki menuye donuyorsunuz.");
 			return true;
@@ -117,20 +113,13 @@ public class AccomadationManagement extends Menu {
 		System.out.println(customer);
 
 		double extra = 0;
+		extra = selectedRoom.getMinibar().calculate() + selectedRoom.getLobbyBeverage().calculate();
 		customer.getBill().setExtra(extra);
+		System.out.println("Total bill:" + customer.getBill().getTotal());
 
-		selectedRoom.setCustomer(null);
+		selectedRoom.checkOutReset();
+		customers.remove(customer);
 
-	}
-
-	private void earlyCheckOutOperation() {
-		Scanner input = new Scanner(System.in);
-		System.out.println(customers);
-		System.out.println("Lutfen check out etmek istediðiniz musterinin sayisini giriniz.");
-		int sayi = input.nextInt();
-		customers.remove(sayi - 1);
-		System.out.println("Guncel musteri raporu.");
-		System.out.println(customers);
 	}
 
 	private void miniBarOperation() {

@@ -20,4 +20,10 @@ public class Bill {
 		return days;
 	}
 
+	public double getTotal() {
+		double totalBill;
+		totalBill = roomPrice * days + extra;
+		return totalBill;
+	}
+
 }

@@ -45,4 +45,15 @@ public class LobbyBeverage extends Minibar {
 		}
 		return p;
 	}
+
+	@Override
+	public double calculate() {
+		double total = 0;
+		for (int i = 0; i < productList.size(); i++) {
+			if (productList.get(i).getQuantity() != 0) {
+				total += productList.get(i).getPrice() * productList.get(i).getQuantity();
+			}
+		}
+		return total;
+	}
 }

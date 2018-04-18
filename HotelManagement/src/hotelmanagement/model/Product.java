@@ -1,6 +1,7 @@
 package hotelmanagement.model;
 
 public class Product {
+
 	private String type;
 	private int quantity;
 	private double price;
@@ -22,6 +23,10 @@ public class Product {
 
 	public String getType() {
 		return type;
+	}
+
+	public double getPrice() {
+		return price;
 	}
 
 	public int getQuantity() {

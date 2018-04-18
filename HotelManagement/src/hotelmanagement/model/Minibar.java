@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Minibar {
 	protected List<Product> productList;
-
+	private double currentBill;
 	private static final List<Product> INITIAL_MINIBAR_PRODUCTS = new ArrayList<Product>();
 	static {
 		createMinibarProducts(INITIAL_MINIBAR_PRODUCTS);
@@ -63,6 +63,50 @@ public class Minibar {
 			}
 		}
 		return null;
+	}
+
+	public double calculate() {
+		return currentBill;
+	}
+
+	public void refill() {
+		for (int i = 0; i < INITIAL_MINIBAR_PRODUCTS.size(); i++) {
+			if (productList.get(i).getQuantity() != INITIAL_MINIBAR_PRODUCTS.get(i).getQuantity()) {
+				int diff = INITIAL_MINIBAR_PRODUCTS.get(i).getQuantity() - productList.get(i).getQuantity();
+				currentBill += diff * productList.get(i).getPrice();
+			}
+		}
+
+		productList.clear();
+		createMinibarProducts(productList);
+
+	}
+
+	public void refill2() {
+		for (int i = 0; i < INITIAL_MINIBAR_PRODUCTS.size(); i++) {
+
+			Product product_i = INITIAL_MINIBAR_PRODUCTS.get(i);
+
+			for (int j = 0; j < productList.size(); j++) {
+
+				Product product_j = productList.get(j);
+
+				if (product_j.getType().equals(product_i.getType())) { // eslesen bulundu
+
+					if (product_j.getQuantity() != product_i.getQuantity()) {
+						int diff = product_i.getQuantity() - product_j.getQuantity();
+						currentBill += diff * product_j.getPrice();
+					}
+
+					break;
+				}
+			}
+
+		}
+
+		productList.clear();
+		createMinibarProducts(productList);
+
 	}
 
 }

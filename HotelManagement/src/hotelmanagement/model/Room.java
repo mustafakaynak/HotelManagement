@@ -105,4 +105,11 @@ public class Room {
 		return price;
 	}
 
+	public void checkOutReset() {
+		this.minibar = new Minibar();
+		this.customer = null;
+		this.lobbyBavarage = new LobbyBeverage();
+
+	}
+
 }
